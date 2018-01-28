@@ -1,5 +1,7 @@
-#ifndef _SAME_H
-#define _SAME_H
+#ifndef SAME_H_
+#define SAME_H_
+
+namespace nathiss {
 
 template <bool C>
 struct bool_type {
@@ -16,5 +18,9 @@ struct is_same : false_type {};
 template <typename T>
 struct is_same<T, T> : true_type {};
 
-#endif // _SAME_H
+template <typename T, typename U>
+inline constexpr bool is_same_v = is_same<T, U>::value;
 
+}  // namespace nathiss
+
+#endif  // x_SAME_H_
