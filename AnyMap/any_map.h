@@ -14,6 +14,8 @@ class AnyMap {
   AnyMap();
   explicit AnyMap(const AnyMap&);
   explicit AnyMap(AnyMap&&);
+  explicit AnyMap(const std::unordered_map<Key, std::any>&);
+  explicit AnyMap(std::unordered_map<Key, std::any>&&);
 
   AnyMap& operator=(const AnyMap&);
   AnyMap& operator=(AnyMap&&);
