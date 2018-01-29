@@ -1,5 +1,5 @@
-#ifndef SAME_H_
-#define SAME_H_
+#ifndef IS_SAME_H_
+#define IS_SAME_H_
 
 namespace nathiss {
 
@@ -23,4 +23,4 @@ inline constexpr bool is_same_v = is_same<T, U>::value;
 
 }  // namespace nathiss
 
-#endif  // x_SAME_H_
+#endif  // IS_SAME_H_
