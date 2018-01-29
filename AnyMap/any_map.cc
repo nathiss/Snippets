@@ -2,20 +2,25 @@
 
 namespace nathiss {
 
-AnyMap::AnyMap() {}
+template <typename Key>
+AnyMap<Key>::AnyMap() {}
 
-AnyMap::AnyMap(const AnyMap& fac)
+template <typename Key>
+AnyMap<Key>::AnyMap(const AnyMap& fac)
     : map_(fac.map_) {}
 
-AnyMap::AnyMap(AnyMap&& fac)
+template <typename Key>
+AnyMap<Key>::AnyMap(AnyMap&& fac)
     : map_(std::move(fac.map_)) {}
 
-AnyMap& AnyMap::operator=(const AnyMap& fac) {
+template <typename Key>
+AnyMap<Key>& AnyMap<Key>::operator=(const AnyMap& fac) {
   this->map_ = fac.map_;
   return *this;
 }
 
-AnyMap& AnyMap::operator=(AnyMap&& fac) {
+template <typename Key>
+AnyMap<Key>& AnyMap<Key>::operator=(AnyMap&& fac) {
   this->map_ = std::move(fac.map_);
   return *this;
 }

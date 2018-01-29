@@ -8,10 +8,9 @@
 
 namespace nathiss {
 
+template <typename Key>
 class AnyMap {
  public:
-  using Key = std::string;
-
   AnyMap();
   explicit AnyMap(const AnyMap&);
   explicit AnyMap(AnyMap&&);
@@ -41,34 +40,40 @@ class AnyMap {
   std::unordered_map<Key, std::any> map_;
 };
 
+template <typename Key>
 template <typename T>
-void AnyMap::set(const AnyMap::Key& key, const T& value) {
+void AnyMap<Key>::set(const Key& key, const T& value) {
   this->map_[key] = std::make_any<T>(value);
 }
 
+template <typename Key>
 template <typename T>
-void AnyMap::set(const AnyMap::Key& key, T&& value) {
+void AnyMap<Key>::set(const Key& key, T&& value) {
   this->map_[key] = std::make_any<T>(std::move(value));
 }
 
+template <typename Key>
 template <typename T>
-void AnyMap::set(AnyMap::Key&& key, const T& value) {
+void AnyMap<Key>::set(Key&& key, const T& value) {
   this->map_[std::move(key)] = std::make_any<T>(value);
 }
 
+template <typename Key>
 template <typename T>
-void AnyMap::set(AnyMap::Key&& key, T&& value) {
+void AnyMap<Key>::set(Key&& key, T&& value) {
   this->map_[std::move(key)] = std::make_any<T>(std::move(value));
 }
 
+template <typename Key>
 template <typename T>
-T&& AnyMap::get(const AnyMap::Key& key) {
+T&& AnyMap<Key>::get(const Key& key) {
   auto tmp = std::any_cast<T>(this->map_[key]);
   return std::move(tmp);
 }
 
+template <typename Key>
 template <typename T>
-T&& AnyMap::get(AnyMap::Key&& key) {
+T&& AnyMap<Key>::get(Key&& key) {
   auto tmp = std::any_cast<T>(this->map_[std::move(key)]);
   return std::move(tmp);
 }
