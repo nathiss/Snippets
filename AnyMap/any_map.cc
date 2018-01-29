@@ -22,6 +22,10 @@ AnyMap<Key>::AnyMap(AnyMap&& fac)
     : map_(std::move(fac.map_)) {}
 
 template <typename Key>
+AnyMap<Key>::AnyMap(std::initializer_list<std::pair<const Key, std::any>> l)
+    : map_{l} {}
+
+template <typename Key>
 AnyMap<Key>& AnyMap<Key>::operator=(const AnyMap& fac) {
   this->map_ = fac.map_;
   return *this;
@@ -30,6 +34,13 @@ AnyMap<Key>& AnyMap<Key>::operator=(const AnyMap& fac) {
 template <typename Key>
 AnyMap<Key>& AnyMap<Key>::operator=(AnyMap&& fac) {
   this->map_ = std::move(fac.map_);
+  return *this;
+}
+
+template <typename Key>
+AnyMap<Key>& AnyMap<Key>::operator=(
+  std::initializer_list<std::pair<const Key, std::any>> l) {
+  this->map_ = l;
   return *this;
 }
 
