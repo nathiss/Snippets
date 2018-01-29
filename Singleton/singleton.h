@@ -14,7 +14,7 @@ class Singleton {
   Singleton& operator=(const Singleton&) = delete;
   Singleton& operator=(Singleton&&) = delete;
 
-  static T& Instance();
+  [[nodiscard]] static T& Instance();
 
  private:
   static std::unique_ptr<T> instance_;
