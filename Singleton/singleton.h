@@ -8,10 +8,13 @@ namespace nathiss {
 template <typename T>
 class Singleton {
  public:
-  static T& Instance();
+  Singleton() = delete;
+  Singleton(const Singleton&) = delete;
+  Singleton(Singleton&&) = delete;
+  Singleton& operator=(const Singleton&) = delete;
+  Singleton& operator=(Singleton&&) = delete;
 
- protected:
-  Singleton() {};
+  static T& Instance();
 
  private:
   static std::unique_ptr<T> instance_;
