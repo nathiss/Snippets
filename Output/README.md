@@ -1,4 +1,4 @@
-#Output
+# Output
 C++ class template for "marking" output arguments.
 
 ## Usage
