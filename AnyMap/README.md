@@ -1,6 +1,6 @@
 # AnyMap
 
-C++'s map for storing any type.
+C++ map for storing any type.
 
 ## Usage
 
