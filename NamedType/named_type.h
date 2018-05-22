@@ -1,5 +1,5 @@
-#ifndef NAMED_H_
-#define NAMED_H_
+#ifndef NATHISS_NAMED_H_
+#define NATHISS_NAMED_H_
 
 #include <utility>
 
@@ -14,10 +14,16 @@ class NamedType {
   T& get() noexcept { return value_; }
   const T& get() const noexcept { return value_; }
 
+  T& operator()() noexcept { return value_; }
+  const T& operator()() const noexcept { return value_; }
+
+  T& operator*() noexcept { return value_; }
+  const T& operator*() const noexcept { return value_; }
+
  private:
   T value_;
 };
 
 }  // namespace nathiss
 
-#endif  // NAMED_H
+#endif  // NATHISS_NAMED_H
